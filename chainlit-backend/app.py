@@ -1,5 +1,5 @@
 import os
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from openai import AsyncOpenAI
 
 from fastapi.responses import JSONResponse
@@ -20,7 +20,7 @@ settings = {
     "presence_penalty": 0,
 }
 
-app = FastAPI()
+# app = FastAPI()
 
 # Set up CORS middleware
 origins = [
@@ -36,10 +36,12 @@ app.add_middleware(
 
 @app.get("/custom-auth")
 async def custom_auth():
-    # Verify the user's identity with custom logic.
-    token = create_jwt(cl.User(identifier="Test User"))
-    # print("Token: ", token)
-    return JSONResponse({"token": token})
+    try:
+        # Your logic here
+        token = create_jwt(cl.User(identifier="Test User"))
+        return JSONResponse(content={"token": token}, status_code=200)
+    except Exception as e:
+        return JSONResponse(content={"error": str(e)}, status_code=500)
 
 @cl.on_chat_start
 async def on_chat_start():
@@ -47,7 +49,7 @@ async def on_chat_start():
         "message_history",
         [{"role": "system", "content": "You are a helpful Kazakhstan legal assistant. You always reply in Russian."}],
     )
-    await cl.Message(content="Connected to Chainlit!").send()
+    await cl.Message(content="Connected to D&A AI Assistant!").send()
 
 
 @cl.on_message
