@@ -7,7 +7,6 @@ import {
 } from "@chainlit/react-client";
 import { Playground } from "./components/playground";
 import { useRecoilValue } from "recoil";
-import { PwCNavbar } from "./components/ui/navbar";
 
 const CHAINLIT_SERVER = "http://0.0.0.0:8000";
 const userEnv = {};
