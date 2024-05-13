@@ -33,28 +33,24 @@ To run the app, follow these steps:
    ```bash
    pip install -r requirements.txt
    ```
-6. Start the backend server
-   ```bash
-   pip install -r requirements.txt
-   ```
-7. Start the backend server:
+6. Start the backend server:
    ```bash
    chainlit run app.py -h -w -d
    ```
-8. Open a new terminal window and navigate to the project directory again:
+7. Open a new terminal window and navigate to the project directory again:
    ```bash
    cd ai-legal-assistant
    ```
 
-9.  Install the dependencies for the frontend:
+8.  Install the dependencies for the frontend:
    ```bash
    cd frontend
    npm install
    ```
 
-10. Start the frontend development server:
+9.  Start the frontend development server:
    ```bash
    npm run dev
    ```
 
-11. Open your web browser and visit `http://localhost:5173` to see the AI chatbot in action.
+10. Open your web browser and visit `http://localhost:5173` to see the AI chatbot in action.
