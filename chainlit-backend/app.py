@@ -24,7 +24,7 @@ settings = {
 
 # Set up CORS middleware
 origins = [
-    "http://localhost:5173",  # Adjust the origins as per your frontend setup
+    "http://localhost:5173",
 ]
 app.add_middleware(
     CORSMiddleware,
