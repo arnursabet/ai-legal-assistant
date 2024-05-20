@@ -80,8 +80,4 @@ cython_debug/
 # VSCode settings
 .vscode/
 
-# Articles directory
-articles/
 
-# Specific directories
-input-files/
