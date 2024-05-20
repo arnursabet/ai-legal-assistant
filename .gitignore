@@ -85,3 +85,7 @@ package-lock.json
 package.json
 .files/
 .chainlit/
+chainlit-backend/.DS_Store
+frontend/.DS_Store
+
+.DS_Store

@@ -14,6 +14,9 @@ from langchain.schema.runnable import Runnable, RunnablePassthrough, RunnableCon
 from langchain.callbacks.base import BaseCallbackHandler
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 
+# List of common English words to detect English questions
+common_english_words = {"the", "be", "to", "of", "and", "a", "in", "that", "have", "I", "it", "for", "not", "on", "with", "he", "as", "you", "do", "at"}
+
 origins = [
     "http://localhost:5173",
 ]
@@ -77,6 +80,11 @@ async def on_chat_start():
 
 @cl.on_message
 async def on_message(message: cl.Message):
+    # Check if the input contains any common English words
+    if any(word in message.content.lower().split() for word in common_english_words):
+        await cl.Message(content="Пожалуйста, задайте вопрос на русском языке.").send()
+        return
+    
     message_history = cl.user_session.get("message_history", [])
     message_history.append({"role": "user", "content": message.content})
 

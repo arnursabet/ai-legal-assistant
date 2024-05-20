@@ -1,3 +1,4 @@
+import * as React from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { v4 as uuidv4 } from "uuid";
@@ -59,18 +60,19 @@ export function Playground() {
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col">
       <PwCNavbar />
-      <div className="flex-1 overflow-auto p-6 pt-20">
+      <div className="flex-1 overflow-auto p-6 pt-20 pb-32">
         <div className="space-y-4">
           {messages.map((message) => renderMessage(message))}
         </div>
       </div>
-      <div className="border-t p-4 bg-white dark:bg-gray-800">
+      <div className="fixed bottom-0 left-0 w-full border-t p-4 bg-white dark:bg-gray-800">
         <div className="flex items-center space-x-2">
           <Input
+            as="textarea"
             autoFocus
-            className="flex-1"
+            className="flex-1 resize-none"
             id="message-input"
-            placeholder="Type a message"
+            placeholder="Message Chatbot"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyUp={(e) => {
