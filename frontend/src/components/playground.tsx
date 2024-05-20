@@ -10,6 +10,8 @@ import {
 } from "@chainlit/react-client";
 import { useState } from "react";
 import { PwCNavbar } from "./ui/navbar";
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 export function Playground() {
   const [inputValue, setInputValue] = useState("");
@@ -45,7 +47,9 @@ export function Playground() {
       <div key={message.id} className="flex items-start space-x-2">
         <div className="w-20 text-sm text-content">{message.name}</div>
         <div className="flex-1 border rounded-lg p-2">
-          <p className="text-black dark:text-white">{message.output}</p>
+          <ReactMarkdown remarkPlugins={[remarkGfm]} className="text-black dark:text-white">
+              {message.output}
+          </ReactMarkdown>
           <small className="text-xs text-gray-500">{date}</small>
         </div>
       </div>
@@ -54,8 +58,8 @@ export function Playground() {
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col">
-      <PwCNavbar></PwCNavbar>
-      <div className="flex-1 overflow-auto p-6">
+      <PwCNavbar />
+      <div className="flex-1 overflow-auto p-6 pt-20">
         <div className="space-y-4">
           {messages.map((message) => renderMessage(message))}
         </div>
