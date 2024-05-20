@@ -36,7 +36,7 @@ async def custom_auth():
 embeddings_model = OpenAIEmbeddings()
 model = ChatOpenAI(model_name="gpt-4o", temperature=0.5, max_tokens=700, streaming=True)
 
-persist_directory = 'ai-legal-assistant/chainlit-backend/db'
+persist_directory = 'db'
 doc_search = Chroma(persist_directory=persist_directory, embedding_function=embeddings_model)
 
 async def setup_runnable():
