@@ -10,14 +10,15 @@ from docx.oxml import parse_xml
 # Function to check if run contains red text
 def is_red(run):
     if run.font.color and run.font.color.rgb:
-        return run.font.color.rgb == (255, 0, 0)  # RGB value for red
+        return run.font.color.rgb == RGBColor(255, 0, 0)  # RGB value for red
+    return False
 
 # Function to remove images, red text, and empty lines
 def clean_document(doc):
     for para in doc.paragraphs:
         new_runs = []
         for run in para.runs:
-            if is_red(run):
+            if not is_red(run):
                 new_runs.append(run.text)
 
         para.clear()  # Clear the paragraph's text
@@ -66,11 +67,6 @@ for doc_path in doc_paths:
     cleaned_doc.save(cleaned_doc_path)
     
     # Convert to txt and save in 'articles' folder
-    # txt_file_name = os.path.basename(cleaned_doc_path).replace(".docx", ".txt")
-
-    # txt_path = os.path.join(output_dir, cleaned_doc)
-    # save_as_txt(cleaned_doc_path, txt_path)
-
-# List the paths of the saved text files
-txt_files = [os.path.join(output_dir, f) for f in os.listdir(output_dir) if f.endswith('.docx')]
-txt_files
+    txt_file_name = os.path.basename(cleaned_doc_path).replace(".docx", ".txt")
+    txt_path = os.path.join(output_dir, txt_file_name)
+    save_as_txt(cleaned_doc_path, txt_path)
