@@ -33,6 +33,7 @@ dataclasses-json==0.5.14
 debugpy==1.8.1
 decorator==5.1.1
 Deprecated==1.2.14
+distlib==0.3.8
 distro==1.9.0
 dnspython==2.6.1
 email_validator==2.1.1
@@ -112,6 +113,8 @@ overrides==7.7.0
 packaging==23.2
 parso==0.8.4
 pexpect==4.9.0
+pip==3.12.3
+pipenv==2023.12.1
 platformdirs==4.2.2
 posthog==3.5.0
 prompt-toolkit==3.0.43
@@ -171,6 +174,7 @@ uptrace==1.24.0
 urllib3==2.2.1
 uvicorn==0.25.0
 uvloop==0.19.0
+virtualenv==20.26.2
 watchfiles==0.20.0
 wcwidth==0.2.13
 websocket-client==1.8.0
