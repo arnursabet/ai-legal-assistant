@@ -87,5 +87,6 @@ package.json
 .chainlit/
 chainlit-backend/.DS_Store
 frontend/.DS_Store
+frontend/src/firebase-config.js
 
 .DS_Store
